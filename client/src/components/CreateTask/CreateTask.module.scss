@@ -1,0 +1,51 @@
+@import "../../assets/styles/variables";
+
+.form {
+  margin: 0 auto 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  position: relative;
+
+  input {
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+.error {
+  width: 100%;
+  margin: 0;
+  font-size: 0.8rem;
+  text-align: center;
+  color: $text-red-color;
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  z-index: 1;
+  transform: translateX(-50%);
+
+  &.dark {
+    color: $text-lightRed-color;
+  }
+}
+
+.button {
+  padding: 2px;
+  border: 2px solid $border-gray-color;
+  border-radius: 5px;
+  background-color: $btn-regular-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $btn-regular-hover-color;
+  }
+}
+
+.icon {
+  width: 25px;
+  height: 25px;
+}

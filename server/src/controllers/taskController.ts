@@ -60,3 +60,22 @@ export const updateTask = async (req: ReqEditTaskBody, res: Response) => {
     res.status(400).json({ message: 'Task not Found!' });
   }
 };
+
+export const deleteTask = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  try {
+    await Task.findByIdAndDelete(id);
+    res.status(200).json({ message: 'Deleted Successfully!' });
+  } catch (error) {
+    res.status(400).json({ message: 'Deletion fails!' });
+  }
+};
+
+export const deleteCompleted = async (_: Request, res: Response) => {
+  try {
+    await Task.deleteMany({ completed: true });
+    res.status(200).json({ message: 'Deleted Successfully!' });
+  } catch (error) {
+    res.status(400).json({ message: 'Deletion fails!' });
+  }
+};
