@@ -3,6 +3,8 @@ import express from 'express';
 import {
   addTask,
   changeCompletedStatus,
+  deleteCompleted,
+  deleteTask,
   getSingleTask,
   getTaskList,
   updateTask,
@@ -15,5 +17,7 @@ taskRouter.get('/:id', getSingleTask);
 taskRouter.post('/', addTask);
 taskRouter.put('/completed/:id', changeCompletedStatus);
 taskRouter.put('/update', updateTask);
+taskRouter.delete('/completed', deleteCompleted);
+taskRouter.delete('/:id', deleteTask);
 
 export default taskRouter;
