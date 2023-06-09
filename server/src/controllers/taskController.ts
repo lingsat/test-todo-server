@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { Task } from '../models/task.js';
-import { ReqAddTaskBody, ReqEditTaskBody } from '../types/task.js';
+// import { ReqAddTaskBody, ReqEditTaskBody } from '../types/request.js';
+import { ReqAddTaskBody, ReqEditTaskBody } from '#types/request';
 
 export const addTask = (req: ReqAddTaskBody, res: Response) => {
   const { title, createdDate, expiredDate } = req.body;
