@@ -2,7 +2,6 @@ import express from 'express';
 
 import {
   addTask,
-  changeCompletedStatus,
   deleteCompleted,
   deleteTask,
   getSingleTask,
@@ -15,7 +14,6 @@ const taskRouter = express.Router();
 taskRouter.get('/', getTaskList);
 taskRouter.get('/:id', getSingleTask);
 taskRouter.post('/', addTask);
-taskRouter.put('/completed/:id', changeCompletedStatus);
 taskRouter.put('/update', updateTask);
 taskRouter.delete('/completed', deleteCompleted);
 taskRouter.delete('/:id', deleteTask);

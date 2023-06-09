@@ -18,7 +18,7 @@
   margin: 0;
   font-size: 0.8rem;
   text-align: center;
-  color: $text-red-color;
+  color: $color-red;
   position: absolute;
   bottom: -18px;
   left: 50%;
@@ -26,22 +26,22 @@
   transform: translateX(-50%);
 
   &.dark {
-    color: $text-lightRed-color;
+    color: $color-pink;
   }
 }
 
 .button {
   padding: 2px;
-  border: 2px solid $border-gray-color;
+  border: 2px solid $color-grey-light;
   border-radius: 5px;
-  background-color: $btn-regular-color;
+  background-color: $color-white;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
 
   &:hover {
-    background-color: $btn-regular-hover-color;
+    background-color: $color-grey-lightest;
   }
 }
 

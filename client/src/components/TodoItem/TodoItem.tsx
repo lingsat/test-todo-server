@@ -6,10 +6,7 @@ import { ITask } from "../../types/task";
 import deleteIcon from "../../assets/images/delete.svg";
 import editIcon from "../../assets/images/edit.svg";
 import styles from "./TodoItem.module.scss";
-import {
-  deleteTaskAsyncAction,
-  toggleCompletedAsyncAction,
-} from "../../store/thunk";
+import { deleteTaskAsyncAction, editTaskAsyncAction } from "../../store/thunk";
 import { useStoreDispatch } from "../../store/store";
 
 interface TodoItemProps {
@@ -28,7 +25,8 @@ const TodoItem: FC<TodoItemProps> = ({ task }) => {
   };
 
   const handleCheckboxChange = () => {
-    dispatch(toggleCompletedAsyncAction(task._id));
+    const changedTask: ITask = { ...task, completed: !task.completed };
+    dispatch(editTaskAsyncAction(changedTask));
   };
 
   const handleDeleteTask = () => {

@@ -5,13 +5,15 @@ import {
   clearCompletedAction,
   deleteSingleTaskAction,
   editTaskAction,
+  endLoadingAction,
+  startLoadingAction,
   taskListAction,
-  toggleCompleteAction,
 } from "./actionCreators";
 
 export const taskListAsyncAction = () => {
   return async (dispatch: Dispatch) => {
     try {
+      dispatch(startLoadingAction());
       const response = await fetch(`${process.env.REACT_APP_API_URL}`, {
         method: "GET",
       });
@@ -22,6 +24,7 @@ export const taskListAsyncAction = () => {
       }
     } catch (error) {
       console.error("Error creating task:", error);
+      dispatch(endLoadingAction());
     }
   };
 };
@@ -43,24 +46,6 @@ export const createTaskAsyncAction = (newTask: ITaskNew) => {
       }
     } catch (error) {
       console.error("Error creating task:", error);
-    }
-  };
-};
-
-export const toggleCompletedAsyncAction = (taskId: string) => {
-  return async (dispatch: Dispatch) => {
-    try {
-      const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/completed/${taskId}`,
-        { method: "PUT" }
-      );
-
-      if (response.ok) {
-        const savedTask: ITask = await response.json();
-        dispatch(toggleCompleteAction(savedTask));
-      }
-    } catch (error) {
-      console.error("Error change task:", error);
     }
   };
 };

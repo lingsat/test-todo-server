@@ -26,22 +26,6 @@ export const getSingleTask = async (req: Request, res: Response) => {
   }
 };
 
-export const changeCompletedStatus = async (req: Request, res: Response) => {
-  const { id } = req.params;
-  try {
-    const task = await Task.findById(id);
-    if (task) {
-      task.completed = !task.completed;
-      task.save();
-      res.status(200).json(task);
-    } else {
-      res.status(400).json({ message: 'Task not Found!' });
-    }
-  } catch (error) {
-    res.status(400).json({ message: 'Task not Found!' });
-  }
-};
-
 export const updateTask = async (req: ReqEditTaskBody, res: Response) => {
   const { _id, title, createdDate, expiredDate, completed } = req.body;
   try {

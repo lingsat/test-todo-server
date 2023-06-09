@@ -8,6 +8,7 @@ import { IFilter } from "../../types/filter";
 import styles from "./TodoList.module.scss";
 import { taskListAsyncAction } from "../../store/thunk";
 import { useStoreDispatch } from "../../store/store";
+import Loading from "../../common/components/Loading/Loading";
 
 interface TodoListProps {
   filter: IFilter;
@@ -16,16 +17,20 @@ interface TodoListProps {
 
 const TodoList: FC<TodoListProps> = ({ filter, setFilter }) => {
   const dispatch = useStoreDispatch();
-  const todoList = useSelector((state: ITodos) => state.todos);
+  const { todos, isLoading } = useSelector((state: ITodos) => state);
 
-  const filteredList = getFilteredList(todoList, filter);
-  const isCompletedExist = getIsCompletedExist(todoList);
+  const filteredList = getFilteredList(todos, filter);
+  const isCompletedExist = getIsCompletedExist(todos);
 
   useEffect(() => {
     dispatch(taskListAsyncAction());
   }, []);
 
-  if (!todoList.length) {
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  if (!todos.length) {
     return <p className={styles.message}>No items found! Create new one.</p>;
   }
 

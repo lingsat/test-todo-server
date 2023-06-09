@@ -6,13 +6,16 @@ export const taskListAction = (payload: ITask[]): IAction => ({
   payload,
 });
 
-export const addTaskAction = (payload: ITask): IAction => ({
-  type: TodoActionTypes.ADD_TASK,
-  payload,
+export const startLoadingAction = (): IAction => ({
+  type: TodoActionTypes.TASK_START_LOADING,
 });
 
-export const toggleCompleteAction = (payload: ITask): IAction => ({
-  type: TodoActionTypes.TOGGLE_COMPLETE,
+export const endLoadingAction = (): IAction => ({
+  type: TodoActionTypes.TASK_END_LOADING,
+});
+
+export const addTaskAction = (payload: ITask): IAction => ({
+  type: TodoActionTypes.ADD_TASK,
   payload,
 });
 
